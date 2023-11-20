@@ -11,22 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pages', function (Blueprint $table) {
-            $table->id();
-            $table->string('title', 128);
-            $table->string('slug', 128)->charset('utf8')->unique('title')->collation('utf8_bin');
-            $table->text('content');
-            $table->timestamps();
+        Schema::table('menu_items', function (Blueprint $table) {
+            $table->unsignedBigInteger('page_id');
+            $table->foreign('page_id')->references('id')->on('pages');
         });
     }
 
-    /**git
+    /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('pages');
+        Schema::table('menu_items', function (Blueprint $table) {
+            //
+        });
     }
 };
-
-
