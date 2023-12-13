@@ -7,8 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vehicle extends Model 
 {
-    public function vehicles()
+    protected $table = 'vehicles';
+
+    protected $fillable = [
+        'carBrand',
+        'carBrandType',
+    ];
+
+    public function Parts()
     {
-        return $this-belongToMany('App\Vehicle');
+        return $this-belongToMany(Part::class);
     }
 }

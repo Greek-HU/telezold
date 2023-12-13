@@ -18,6 +18,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('parts',[PartController::class,'getPart']);
-
-//Route::get('vehicles',[VehicleController::class,'getVehicle']);
